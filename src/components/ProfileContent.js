@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 
 function FormUser({ userData }) {
   return (
@@ -92,7 +92,7 @@ function FormUser({ userData }) {
               type="date"
               className="profile-custom-form"
               id="date"
-              value="2003-09-03"
+              value={userData.dob}
             />
           </div>
         </div>

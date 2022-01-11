@@ -9,26 +9,6 @@ export default class Header extends React.Component {
     profilePicture: require("../assets/images/default.jpg"),
   };
 
-  // getUserData() {
-  //   const accessToken = JSON.parse(
-  //     localStorage.getItem("vehicle-rental-token")
-  //   );
-  //   const URL = `${process.env.REACT_APP_HOST}/users/detail`;
-  //   axios
-  //     .get(URL, { headers: { "x-access-token": accessToken } })
-  //     .then((response) => {
-  //       const { photo } = response.data.result.data[0];
-  //       // console.log(photo);
-  //       if (photo)
-  //         this.setState({
-  //           profilePicture: `${process.env.REACT_APP_HOST}/${photo}`,
-  //         });
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }
-
   logout = () => {
     localStorage.removeItem("vehicle-rental-token");
     this.setState({
@@ -54,7 +34,7 @@ export default class Header extends React.Component {
         .get(URL, { headers: { "x-access-token": accessToken } })
         .then((response) => {
           const { photo } = response.data.result.data[0];
-          console.log(photo);
+          // console.log(photo);
           if (photo)
             this.setState({
               accessToken: accessToken,
@@ -137,7 +117,7 @@ export default class Header extends React.Component {
                   </Link>
                 </li>
                 <hr className="line-nav" />
-                {!this.state.isAuthed ? (
+                {!isAuthed ? (
                   <div className="button-login-register">
                     <Link to="/login">
                       <button className="btn btn-outline-warning">Login</button>

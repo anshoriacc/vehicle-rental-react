@@ -1,9 +1,9 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
 
-function detailVehicle({ vehiclesData }) {
+const detailVehicle = ({ vehiclesData }) => {
   return <Redirect to={`/vehicle/detail/${vehiclesData.id}`} />;
-}
+};
 
 function SectionTitle({ category }) {
   return (

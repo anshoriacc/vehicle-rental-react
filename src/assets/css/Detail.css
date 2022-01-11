@@ -55,6 +55,8 @@ p.info {
 
 button.count-button {
   width: 5rem;
+  height: auto;
+  min-height: 60px;
   font-weight: 900;
   font-size: 3rem;
   border-radius: 10px;

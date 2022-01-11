@@ -24,7 +24,7 @@ export default class Main extends React.Component {
           <Route path="/history" component={History} />
           <Route path="/vehicle" exact component={Vehicle} />
           <Route path="/vehicle/:category" component={VehicleByCategory} />
-          <Route path="/vehicle/detail/:id" component={Detail} />
+          <Route path="/vehicledetail" exact component={Detail} />
         </Switch>
       </Router>
     );

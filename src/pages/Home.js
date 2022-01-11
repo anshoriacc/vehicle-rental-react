@@ -94,7 +94,6 @@ export default class Home extends React.Component {
           </section>
         </section>
         <section className="content">
-          
           <VehicleTypeCard category="popular" vehiclesData={vehiclesData} />
           <h2 className="section-title">Testimonials</h2>
           <Testimony />
