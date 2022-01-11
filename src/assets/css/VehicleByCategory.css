@@ -1,0 +1,38 @@
+.popular-full {
+  padding-bottom: 2vmax;
+  display: grid;
+  grid-template-columns: repeat(2, calc((100vw - 12vmax) / 2));
+  grid-template-rows: repeat(8, calc((4 / 3) * calc((100vw - 12vmax) / 2)));
+  grid-gap: 2vmax;
+}
+
+.popular-card1 {
+  background-image: url("../../assets/images/van-forest.jpg");
+}
+
+.popular-card2 {
+  background-image: url("../../assets/images/ride-extreme.jpg");
+}
+
+.popular-card3 {
+  background-image: url("../../assets/images/jeep-bromo.jpg");
+}
+
+.popular-card4 {
+  background-image: url("../../assets/images/ride-town.jpg");
+}
+
+@media (min-width: 576px) {
+}
+
+@media (min-width: 768px) {
+  /* popular */
+  .popular-full {
+    /* display: grid; */
+    grid-template-columns: repeat(4, calc((100vw - 16vmax) / 4));
+    grid-template-rows: repeat(4, calc((4 / 3) * calc((100vw - 16vmax) / 4)));
+  }
+}
+
+@media (min-width: 992px) {
+}

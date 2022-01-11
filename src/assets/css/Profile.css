@@ -1,0 +1,79 @@
+/* content */
+.h2-page-title {
+  font-family: inherit;
+}
+
+.profile-picture-container {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.edit-profile-picture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  background-color: #ffcd61;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+
+.icon-edit {
+  content: url("../icons/icon-edit.png");
+}
+
+.profile-picture {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.info {
+  font-weight: 700;
+  color: #b8becd;
+  margin-bottom: 0px;
+}
+
+.section-title-2 {
+  font-weight: 900;
+}
+
+.profile-custom-form,
+.profile-custom-form:focus {
+  width: 100%;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  display: block;
+  font-weight: 400;
+}
+
+.form-check-input:checked {
+  background-color: #ffcd61;
+  border-color: #ffcd61;
+}
+
+label {
+  font-weight: 400;
+  color: #9f9f9f;
+}
+
+.action {
+  display: flex;
+  justify-content: space-between;
+}
+
+.action-button {
+  width: 30%;
+  height: auto;
+  min-height: 60px;
+  font-weight: 700;
+  border-radius: 10px;
+}

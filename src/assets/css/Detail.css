@@ -1,0 +1,119 @@
+/* content */
+.vehicle {
+  display: grid;
+  grid-template-columns: auto;
+  grid-gap: 2vmax;
+}
+
+/* carousel */
+#carousel-thumb {
+  height: calc(100vw - 15vmax);
+}
+
+.sr-only {
+  font-size: 0px;
+}
+
+/* detail */
+.location {
+  font-family: "Playfair Display", sans-serif;
+  margin-bottom: 2rem;
+}
+
+.availability {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #087e0d;
+}
+
+.payment {
+  font-weight: 300;
+  font-size: 1.5rem;
+  color: #9b0a0a;
+  margin-bottom: 2rem;
+}
+
+p.info {
+  margin-bottom: 0.5rem;
+}
+
+.price {
+  font-family: "Playfair Display", sans-serif;
+  font-weight: 700;
+  font-size: 2.25rem;
+  text-align: end;
+  margin-bottom: 2rem;
+}
+
+.count {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-weight: 900;
+  font-size: 3rem;
+}
+
+button.count-button {
+  width: 5rem;
+  font-weight: 900;
+  font-size: 3rem;
+  border-radius: 10px;
+}
+
+.action {
+  margin-top: 2vmax;
+  display: flex;
+  justify-content: space-between;
+}
+
+.action-button {
+  width: 30%;
+  height: auto;
+  min-height: 60px;
+  font-weight: 700;
+  border-radius: 10px;
+}
+
+button.icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.icon-like {
+  content: url("../icons/icon-like.png");
+  height: 1.5rem;
+}
+
+@media (min-width: 576px) {
+  /* content */
+  .vehicle {
+    display: grid;
+    grid-template-columns: 50% auto;
+    grid-gap: 2vmax;
+  }
+
+  /* carousel */
+  #carousel-thumb {
+    height: calc(50vw - 10vmax);
+  }
+}
+
+@media (min-width: 768px) {
+  /* content */
+  h1 {
+    font-size: 3.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .action-button {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 992px) {
+}

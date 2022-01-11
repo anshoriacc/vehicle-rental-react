@@ -1,0 +1,113 @@
+/* main */
+.main {
+  height: 100vh;
+  background-image: linear-gradient(#00000066 100%, #fff 0%),
+    url("../images/jeep-bromo.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: #fff;
+}
+
+.main a {
+  color: #fff;
+}
+
+.left-section,
+.right-section {
+  padding: 10%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-weight: 700;
+}
+
+.fixed-width {
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+}
+
+button.fixed-width {
+  width: 100%;
+  font-weight: 900;
+}
+
+.left-section {
+  padding-top: 5vmax;
+  margin: auto 0px;
+}
+
+.register1,
+.login1 {
+  display: none;
+}
+
+.right-section {
+  justify-content: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.custom-form,
+.custom-form:focus {
+  padding-left: 0.5rem;
+  background-color: #ffffff80;
+  border: 0px;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.custom-form::placeholder {
+  padding-left: 0.5rem;
+  color: #fff;
+}
+
+.icon-google {
+  content: url("../icons/icon-google.png");
+  height: 1.5rem;
+}
+
+button.icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+@media (min-width: 576px) {
+}
+
+@media (min-width: 768px) {
+  /* main */
+  .main {
+    display: grid;
+    grid-template-columns: 50vw 50vw;
+  }
+
+  .left-section {
+    border-right: 1px solid #fff;
+    height: 75vh;
+  }
+
+  .register1,
+  .login1 {
+    display: initial;
+  }
+
+  .register2,
+  .login2 {
+    display: none;
+  }
+
+  .fixed-width {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 992px) {
+}
