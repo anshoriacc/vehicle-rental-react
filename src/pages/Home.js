@@ -19,7 +19,8 @@ export default class Home extends React.Component {
     const accessToken = JSON.parse(
       localStorage.getItem("vehicle-rental-token")
     );
-    // console.log(accessToken);
+    // console.log(typeOf(acc))
+    console.log(typeof accessToken);
     if (accessToken) {
       this.setState({
         accessToken: accessToken,

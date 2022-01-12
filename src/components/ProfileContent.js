@@ -1,14 +1,19 @@
 import React from "react";
 // import { Redirect } from "react-router-dom";
 
-function FormUser({ userData }) {
+function FormUser({ userData, defaultProfilePicture }) {
+  // console.log(defaultProfilePicture);
   return (
     <section className="content">
       <h2 className="h2-page-title">Profile</h2>
       <section className="profile text-center">
         <div className="profile-picture-container">
           <img
-            src={`${process.env.REACT_APP_HOST}/${userData.photo}`}
+            src={
+              !userData.photo
+                ? require("../assets/images/default.jpg")
+                : `${process.env.REACT_APP_HOST}/${userData.photo}`
+            }
             className="profile-picture"
             alt=""
           />

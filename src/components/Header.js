@@ -34,7 +34,7 @@ export default class Header extends React.Component {
         .get(URL, { headers: { "x-access-token": accessToken } })
         .then((response) => {
           const { photo } = response.data.result.data[0];
-          // console.log(photo);
+          console.log(photo);
           if (photo)
             this.setState({
               accessToken: accessToken,
@@ -52,7 +52,7 @@ export default class Header extends React.Component {
   render() {
     const { isAuthed } = this.props;
     // console.log(isAuthed);
-
+    console.log(this.state);
     return (
       <header>
         <nav className="navbar navbar-expand-sm navbar-light p-0">

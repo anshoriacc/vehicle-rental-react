@@ -11,6 +11,7 @@ export default class Profile extends React.Component {
     accessToken: "",
     isAuthed: false,
     userData: "",
+    defaultProfilePicture: require("../assets/images/default.jpg"),
   };
 
   // getUserData() {
@@ -60,7 +61,9 @@ export default class Profile extends React.Component {
   }
 
   render() {
-    const { isAuthed, accessToken, userData } = this.state;
+    const { isAuthed, accessToken, userData, defaultProfilePicture } =
+      this.state;
+    console.log(defaultProfilePicture);
     return (
       <main>
         <Header
@@ -68,7 +71,11 @@ export default class Profile extends React.Component {
           accessToken={accessToken}
           path={this.props.match.path}
         />
-        <ProfileContent isAuthed={isAuthed} userData={userData} />
+        <ProfileContent
+          isAuthed={isAuthed}
+          userData={userData}
+          defaultProfilePicture={defaultProfilePicture}
+        />
         <Footer />
       </main>
     );
