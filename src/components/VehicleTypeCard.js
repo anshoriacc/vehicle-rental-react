@@ -2,7 +2,7 @@ import React from "react";
 import { Link, Redirect } from "react-router-dom";
 
 const detailVehicle = ({ vehiclesData }) => {
-  return <Redirect to={`/vehicle/detail/${vehiclesData.id}`} />;
+  return <Redirect to={`/vehicle/detail/1`} />;
 };
 
 function SectionTitle({ category }) {
@@ -15,8 +15,14 @@ function SectionTitle({ category }) {
 }
 
 function Card({ vehiclesData, index }) {
+  console.log();
   return (
-    <div className={`popular-card${index + 1}`} onClick={detailVehicle}>
+    <div
+      className={`popular-card${index + 1}`}
+      onClick={() => {
+        return <Redirect to={`/vehicle/detail/${vehiclesData.id}`} />;
+      }}
+    >
       <div className="pc-text">
         <p className="pc-title">{vehiclesData.vehicle}</p>
         <p className="pc-location">{vehiclesData.location}</p>
@@ -35,7 +41,7 @@ export default function VehicleTypeCard({ category, vehiclesData }) {
             <Card
               category={category}
               vehiclesData={vehicle}
-              key={idx}
+              key={vehicle.id}
               index={idx}
             />
           ))}

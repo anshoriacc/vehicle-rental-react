@@ -1,58 +1,64 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 
-export default class Header extends React.Component {
+class Header extends React.Component {
   state = {
-    accessToken: this.props.accessToken,
-    isAuthed: this.props.isAuthed,
-    profilePicture: require("../assets/images/default.jpg"),
+    accessToken: "",
   };
 
   logout = () => {
     localStorage.removeItem("vehicle-rental-token");
     this.setState({
       accessToken: "",
-      isAuthed: false,
     });
     console.log("logout");
   };
 
-  componentDidUpdate() {
-    console.log("update");
-  }
+  // componentDidUpdate() {
+  //   console.log("update");
+  // }
+
+  // componentDidMount() {
+  //   const { isAuthed } = this.state;
+  //   // if (isAuthed) this.getUserData();
+  //   if (isAuthed) {
+  //     const accessToken = JSON.parse(
+  //       localStorage.getItem("vehicle-rental-token")
+  //     );
+  //     const URL = `${process.env.REACT_APP_HOST}/users/detail`;
+  //     axios
+  //       .get(URL, { headers: { "x-access-token": accessToken } })
+  //       .then((response) => {
+  //         const { photo } = response.data.result.data[0];
+  //         console.log(photo);
+  //         if (photo)
+  //           this.setState({
+  //             accessToken: accessToken,
+  //             isAuthed: true,
+  //             profilePicture: `${process.env.REACT_APP_HOST}/${photo}`,
+  //           });
+  //         console.log(isAuthed);
+  //       })
+  //       .catch((error) => {
+  //         console.log(error);
+  //       });
+  //   }
+  // }
 
   componentDidMount() {
-    const { isAuthed } = this.state;
-    // if (isAuthed) this.getUserData();
-    if (isAuthed) {
-      const accessToken = JSON.parse(
-        localStorage.getItem("vehicle-rental-token")
-      );
-      const URL = `${process.env.REACT_APP_HOST}/users/detail`;
-      axios
-        .get(URL, { headers: { "x-access-token": accessToken } })
-        .then((response) => {
-          const { photo } = response.data.result.data[0];
-          console.log(photo);
-          if (photo)
-            this.setState({
-              accessToken: accessToken,
-              isAuthed: true,
-              profilePicture: `${process.env.REACT_APP_HOST}/${photo}`,
-            });
-          console.log(isAuthed);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
+    const accessToken = JSON.parse(
+      localStorage.getItem("vehicle-rental-token")
+    );
+
+    this.setState({ token: accessToken });
   }
 
   render() {
-    const { isAuthed } = this.props;
-    // console.log(isAuthed);
-    console.log(this.state);
+    const accessToken = JSON.parse(
+      localStorage.getItem("vehicle-rental-token")
+    );
     return (
       <header>
         <nav className="navbar navbar-expand-sm navbar-light p-0">
@@ -117,7 +123,7 @@ export default class Header extends React.Component {
                   </Link>
                 </li>
                 <hr className="line-nav" />
-                {!isAuthed ? (
+                {!accessToken ? (
                   <div className="button-login-register">
                     <Link to="/login">
                       <button className="btn btn-outline-warning">Login</button>
@@ -133,7 +139,11 @@ export default class Header extends React.Component {
                     </Link>
                     <div className="dropdown">
                       <img
-                        src={this.state.profilePicture}
+                        src={
+                          !this.props.auth.userData.photo
+                            ? require("../assets/images/default.jpg")
+                            : `${process.env.REACT_APP_HOST}/${this.props.auth.userData.photo}`
+                        }
                         className="icon-profile dropbtn"
                         alt="profile"
                         onClick={() => {
@@ -159,3 +169,11 @@ export default class Header extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth,
+  };
+};
+
+export default connect(mapStateToProps)(Header);

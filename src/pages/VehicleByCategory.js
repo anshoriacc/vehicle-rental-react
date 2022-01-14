@@ -1,22 +1,17 @@
 import React from "react";
-import axios from "axios";
 
 import "../assets/css/VehicleByCategory.css";
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import VehicleByCategoryCard from "../components/VehicleByCategoryCard";
+import { getVehicle16 } from "../utils/vehicle";
 
 export default class VehicleByCategory extends React.Component {
   state = {
     accessToken: "",
-    isAuthed: false,
     vehiclesData: "",
   };
-
-  //   componentDidUpdate() {
-  //     console.log(this.state);
-  //   }
 
   componentDidMount() {
     const accessToken = JSON.parse(
@@ -25,44 +20,37 @@ export default class VehicleByCategory extends React.Component {
     if (accessToken) {
       this.setState({
         accessToken: accessToken,
-        isAuthed: true,
       });
     }
 
     const { category } = this.props.match.params;
-    axios
-      .get(`${process.env.REACT_APP_HOST}/vehicles/${category}/?limit=16&page=1`)
+
+    getVehicle16(category, 1)
       .then((response) => {
         this.setState({
           vehiclesData: response.data.result.data,
         });
-        // console.log(response.data.result.data);
-        // console.log(this.props);
       })
       .catch((error) => {
         console.log(error);
       });
-
-    // this.setState({
-    //   token: accessToken,
-    //   isAuthed: true,
-    // });
   }
 
   render() {
-    const { vehiclesData, isAuthed, accessToken } = this.state;
+    const { vehiclesData } = this.state;
+    const { category } = this.props.match.params;
 
     return (
       <main>
         <Header
-          isAuthed={isAuthed}
-          accessToken={accessToken}
-          path={this.props.match.path}
+        // isAuthed={isAuthed}
+        // accessToken={accessToken}
+        // path={this.props.match.path}
         />
 
         <section className="content">
           <VehicleByCategoryCard
-            category="popular"
+            category={category}
             vehiclesData={vehiclesData}
           />
         </section>

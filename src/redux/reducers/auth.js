@@ -5,8 +5,9 @@ import { ACTION_STRING } from "../actions/actionString";
 const initialState = {
   userData: {
     token: JSON.parse(localStorage["vehicle-rental-token"] || null),
-    photo: "",
+    name: "",
     role: 0,
+    photo: require("../../assets/images/default.jpg"),
   },
   isPending: false,
   isFulfilled: false,
@@ -29,6 +30,9 @@ const authReducer = (prevState = initialState, action) => {
       const userData = {
         ...prevState.userData,
         token: data.result.data.token,
+        name: data.result.data.name,
+        role: data.result.data.role_id,
+        photo: data.result.data.photo,
       };
       return {
         ...prevState,

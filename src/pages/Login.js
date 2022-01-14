@@ -1,81 +1,104 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+
 import "../assets/css/LoginRegister.css";
 
-import { login } from "../utils/auth";
+import { loginAction } from "../redux/actions/auth";
 
 import Footer from "../components/Footer";
 
-function Login(props) {
-  const submitHandler = (e) => {
+class Login extends React.Component {
+  submitHandler = (e) => {
     e.preventDefault();
     const body = {
       email: e.target.email.value,
       password: e.target.password.value,
     };
-    login(body)
-      .then((response) => {
-        const token = response.data.result.data.token;
-        localStorage.setItem("vehicle-rental-token", JSON.stringify(token));
-        props.history.push("/");
-      })
-      .catch((err) => console.error(err));
+
+    this.props.loginDispatch(body);
   };
-  
-  return (
-    <>
-      <section className="main">
-        <section className="left-section">
-          <h1>
-            <p>Let's Explore</p>
-            <p>The World</p>
-          </h1>
-          <p className="register1">Don't have an account?</p>
-          <Link to="/register" style={{ textDecoration: "none" }}>
-            <button
-              style={{ maxWidth: "375px" }}
-              className="btn bg-dark text-warning fixed-width register1"
-            >
-              Register
-            </button>
-          </Link>
-        </section>
-        <section className="right-section">
-          <form onSubmit={submitHandler}>
-            <input
-              type="email"
-              className="custom-form fixed-width"
-              placeholder="Email"
-              name="email"
-              id="email"
-              required
-            />
-            <input
-              type="password"
-              className="custom-form fixed-width"
-              placeholder="Password"
-              name="password"
-              id="Password"
-              required
-            />
-            <Link to="" style={{ fontFamily: "'Mulish', sans-serif" }}>
-              Forgot password?
+
+  componentDidUpdate() {
+    if (this.props.auth.isFulfilled === true) {
+      localStorage.setItem(
+        "vehicle-rental-token",
+        JSON.stringify(this.props.auth.userData.token)
+      );
+      this.props.history.push("/");
+    }
+  }
+
+  render() {
+    return (
+      <>
+        <section className="main">
+          <section className="left-section">
+            <h1>
+              <p>Let's Explore</p>
+              <p>The World</p>
+            </h1>
+            <p className="register1">Don't have an account?</p>
+            <Link to="/register" style={{ textDecoration: "none" }}>
+              <button
+                style={{ maxWidth: "375px" }}
+                className="btn bg-dark text-warning fixed-width register1"
+              >
+                Register
+              </button>
             </Link>
-            <button type="submit" className="btn btn-warning fixed-width">
-              Login
+          </section>
+          <section className="right-section">
+            <form onSubmit={this.submitHandler}>
+              <input
+                type="email"
+                className="custom-form fixed-width"
+                placeholder="Email"
+                name="email"
+                id="email"
+                required
+              />
+              <input
+                type="password"
+                className="custom-form fixed-width"
+                placeholder="Password"
+                name="password"
+                id="Password"
+                required
+              />
+              <Link to="" style={{ fontFamily: "'Mulish', sans-serif" }}>
+                Forgot password?
+              </Link>
+              <button type="submit" className="btn btn-warning fixed-width">
+                Login
+              </button>
+            </form>
+            <button className="btn bg-light fixed-width icon-button">
+              <i className="icon-google"></i>Login with Google
             </button>
-          </form>
-          <button className="btn bg-light fixed-width icon-button">
-            <i className="icon-google"></i>Login with Google
-          </button>
-          <p className="register2 text-center">
-            Don't have account? <Link to="/register">Register</Link> now
-          </p>
+            <p className="register2 text-center">
+              Don't have account? <Link to="/register">Register</Link> now
+            </p>
+          </section>
         </section>
-      </section>
-      <Footer />
-    </>
-  );
+        <Footer />
+      </>
+    );
+  }
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loginDispatch: (body) => {
+      dispatch(loginAction(body));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

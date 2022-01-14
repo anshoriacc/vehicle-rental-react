@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+import { connect } from "react-redux";
 
 import "../assets/css/Home.css";
 
@@ -7,11 +7,11 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import VehicleTypeCard from "../components/VehicleTypeCard";
 import Testimony from "../components/Testimony";
+import { getVehicle4 } from "../utils/vehicle";
 
-export default class Home extends React.Component {
+class Home extends React.Component {
   state = {
     accessToken: "",
-    isAuthed: false,
     vehiclesData: "",
   };
 
@@ -19,45 +19,33 @@ export default class Home extends React.Component {
     const accessToken = JSON.parse(
       localStorage.getItem("vehicle-rental-token")
     );
-    // console.log(typeOf(acc))
-    console.log(typeof accessToken);
+
     if (accessToken) {
       this.setState({
         accessToken: accessToken,
-        isAuthed: true,
       });
-      console.log(1)
     }
 
-    axios
-      .get(`${process.env.REACT_APP_HOST}/vehicles/popular/?limit=4&page=1`)
+    getVehicle4("popular")
       .then((response) => {
         this.setState({
           vehiclesData: response.data.result.data,
         });
-        console.log(2)
-        // console.log(response.data.result.data);
-        // console.log(this.props);
       })
       .catch((error) => {
         console.log(error);
       });
-
-    // this.setState({
-    //   token: accessToken,
-    //   isAuthed: true,
-    // });
   }
 
   render() {
-    const { vehiclesData, isAuthed, accessToken } = this.state;
+    const { vehiclesData } = this.state;
 
     return (
       <main>
         <Header
-          isAuthed={isAuthed}
-          accessToken={accessToken}
-          path={this.props.match.path}
+        // isAuthed={isAuthed}
+        // accessToken={accessToken}
+        // path={this.props.match.path}
         />
         <section className="finder-container">
           <section className="finder-content">
@@ -104,3 +92,11 @@ export default class Home extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth,
+  };
+};
+
+export default connect(mapStateToProps)(Home);

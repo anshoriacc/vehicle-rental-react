@@ -6,20 +6,20 @@ import "../assets/css/Home.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import VehicleTypeCard from "../components/VehicleTypeCard";
+import { getVehicle4 } from "../utils/vehicle";
 
 export default class Vehicle extends React.Component {
   state = {
     accessToken: "",
-    isAuthed: false,
     popularVehiclesData: "",
     bikeVehiclesData: "",
     carVehiclesData: "",
     motorbikeVehiclesData: "",
   };
 
-//   componentDidUpdate() {
-//     console.log(this.state);
-//   }
+  //   componentDidUpdate() {
+  //     console.log(this.state);
+  //   }
 
   componentDidMount() {
     const accessToken = JSON.parse(
@@ -28,63 +28,29 @@ export default class Vehicle extends React.Component {
     if (accessToken) {
       this.setState({
         accessToken: accessToken,
-        isAuthed: true,
       });
     }
 
     axios
-      .get(`${process.env.REACT_APP_HOST}/vehicles/popular/?limit=4&page=1`)
-      .then((response) => {
-        this.setState({
-          popularVehiclesData: response.data.result.data,
-        });
-        // console.log(response.data.result.data);
-        // console.log(this.props);
-      })
+      .all([
+        getVehicle4("popular"),
+        getVehicle4("bike"),
+        getVehicle4("car"),
+        getVehicle4("motorbike"),
+      ])
+      .then(
+        axios.spread((res1, res2, res3, res4) => {
+          this.setState({
+            popularVehiclesData: res1.data.result.data,
+            bikeVehiclesData: res2.data.result.data,
+            carVehiclesData: res3.data.result.data,
+            motorbikeVehiclesData: res4.data.result.data,
+          });
+        })
+      )
       .catch((error) => {
         console.log(error);
       });
-    axios
-      .get(`${process.env.REACT_APP_HOST}/vehicles/bike/?limit=4&page=1`)
-      .then((response) => {
-        this.setState({
-          bikeVehiclesData: response.data.result.data,
-        });
-        // console.log(response.data.result.data);
-        // console.log(this.props);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    axios
-      .get(`${process.env.REACT_APP_HOST}/vehicles/car/?limit=4&page=1`)
-      .then((response) => {
-        this.setState({
-          carVehiclesData: response.data.result.data,
-        });
-        // console.log(response.data.result.data);
-        // console.log(this.props);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    axios
-      .get(`${process.env.REACT_APP_HOST}/vehicles/motorbike/?limit=4&page=1`)
-      .then((response) => {
-        this.setState({
-          motorbikeVehiclesData: response.data.result.data,
-        });
-        // console.log(response.data.result.data);
-        // console.log(this.props);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    // this.setState({
-    //   token: accessToken,
-    //   isAuthed: true,
-    // });
   }
 
   render() {
@@ -93,16 +59,14 @@ export default class Vehicle extends React.Component {
       bikeVehiclesData,
       carVehiclesData,
       motorbikeVehiclesData,
-      isAuthed,
-      accessToken,
     } = this.state;
 
     return (
       <main>
         <Header
-          isAuthed={isAuthed}
-          accessToken={accessToken}
-          path={this.props.match.path}
+        // isAuthed={isAuthed}
+        // accessToken={accessToken}
+        // path={this.props.match.path}
         />
 
         <section className="content">
