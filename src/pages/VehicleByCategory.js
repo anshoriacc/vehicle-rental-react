@@ -52,6 +52,7 @@ export default class VehicleByCategory extends React.Component {
           <VehicleByCategoryCard
             category={category}
             vehiclesData={vehiclesData}
+            history={this.props.history}
           />
         </section>
         <Footer />

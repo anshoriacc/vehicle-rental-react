@@ -25,7 +25,22 @@ class Login extends React.Component {
         "vehicle-rental-token",
         JSON.stringify(this.props.auth.userData.token)
       );
+      localStorage.setItem(
+        "vehicle-rental-name",
+        JSON.stringify(this.props.auth.userData.name)
+      );
+      localStorage.setItem(
+        "vehicle-rental-role",
+        JSON.stringify(this.props.auth.userData.role)
+      );
+      localStorage.setItem(
+        "vehicle-rental-photo",
+        JSON.stringify(this.props.auth.userData.photo)
+      );
       this.props.history.push("/");
+    }
+    if (this.props.auth.isRejected === true) {
+      console.log("wakwawww");
     }
   }
 
@@ -49,7 +64,7 @@ class Login extends React.Component {
             </Link>
           </section>
           <section className="right-section">
-            <form onSubmit={this.submitHandler}>
+            <form className="form-login-register" onSubmit={this.submitHandler}>
               <input
                 type="email"
                 className="custom-form fixed-width"
@@ -66,7 +81,7 @@ class Login extends React.Component {
                 id="Password"
                 required
               />
-              <Link to="" style={{ fontFamily: "'Mulish', sans-serif" }}>
+              <Link to="/forgot" style={{ fontFamily: "'Mulish', sans-serif" }}>
                 Forgot password?
               </Link>
               <button type="submit" className="btn btn-warning fixed-width">

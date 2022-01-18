@@ -1,8 +1,6 @@
 import React from "react";
-// import { Redirect } from "react-router-dom";
 
-function FormUser({ userData, defaultProfilePicture }) {
-  // console.log(defaultProfilePicture);
+function FormUser({ userData, history}) {
   return (
     <section className="content">
       <h2 className="h2-page-title">Profile</h2>
@@ -104,7 +102,10 @@ function FormUser({ userData, defaultProfilePicture }) {
       </section>
       <section className="action">
         <button className="btn btn-warning action-button">Save Change</button>
-        <button className="btn btn-dark text-warning action-button">
+        <button
+          className="btn btn-dark text-warning action-button"
+          onClick={() => history.push("/profile/editpassword")}
+        >
           Edit Password
         </button>
         <button className="btn btn-light action-button">Cancel</button>
@@ -113,7 +114,7 @@ function FormUser({ userData, defaultProfilePicture }) {
   );
 }
 
-export default function ProfileContent({ isAuthed, userData }) {
+export default function ProfileContent({ isAuthed, userData,  history}) {
   // if (!isAuthed) return <Redirect to="/" />;
-  return <FormUser userData={userData} />;
+  return <FormUser userData={userData} history={history} />;
 }

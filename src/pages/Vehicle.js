@@ -73,12 +73,22 @@ export default class Vehicle extends React.Component {
           <VehicleTypeCard
             category="popular"
             vehiclesData={popularVehiclesData}
+            history={this.props.history}
           />
-          <VehicleTypeCard category="bike" vehiclesData={bikeVehiclesData} />
-          <VehicleTypeCard category="car" vehiclesData={carVehiclesData} />
+          <VehicleTypeCard
+            category="bike"
+            vehiclesData={bikeVehiclesData}
+            history={this.props.history}
+          />
+          <VehicleTypeCard
+            category="car"
+            vehiclesData={carVehiclesData}
+            history={this.props.history}
+          />
           <VehicleTypeCard
             category="motorbike"
             vehiclesData={motorbikeVehiclesData}
+            history={this.props.history}
           />
         </section>
         <Footer />

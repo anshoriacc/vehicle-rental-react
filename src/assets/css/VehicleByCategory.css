@@ -6,12 +6,12 @@
   grid-gap: 2vmax;
 }
 
-.popular-card1 {
+/* .popular-card1 {
   background-image: url("../../assets/images/van-forest.jpg");
 }
 
 .popular-card2 {
-  background-image: url("../../assets/images/ride-extreme.jpg");
+  background-image: url("../images/ride-extreme.jpg");
 }
 
 .popular-card3 {
@@ -20,7 +20,7 @@
 
 .popular-card4 {
   background-image: url("../../assets/images/ride-town.jpg");
-}
+} */
 
 @media (min-width: 576px) {
 }

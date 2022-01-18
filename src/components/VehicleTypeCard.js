@@ -1,9 +1,5 @@
 import React from "react";
-import { Link, Redirect } from "react-router-dom";
-
-const detailVehicle = ({ vehiclesData }) => {
-  return <Redirect to={`/vehicle/detail/1`} />;
-};
+import { Link } from "react-router-dom";
 
 function SectionTitle({ category }) {
   return (
@@ -14,14 +10,14 @@ function SectionTitle({ category }) {
   );
 }
 
-function Card({ vehiclesData, index }) {
-  console.log();
+function Card({ vehiclesData, index, history }) {
   return (
     <div
       className={`popular-card${index + 1}`}
-      onClick={() => {
-        return <Redirect to={`/vehicle/detail/${vehiclesData.id}`} />;
+      style={{
+        backgroundImage: `url("https://teja9.kuikr.com/images/car/default-cars.jpeg")`,
       }}
+      onClick={() => history.push(`/vehicle/detail/${vehiclesData.id}`)}
     >
       <div className="pc-text">
         <p className="pc-title">{vehiclesData.vehicle}</p>
@@ -31,20 +27,41 @@ function Card({ vehiclesData, index }) {
   );
 }
 
-export default function VehicleTypeCard({ category, vehiclesData }) {
+function CardEmpty() {
+  // const arr = [1, 2, 3, 4];
+  return (
+    <>
+      {/* {arr.map(()=>( */}
+      <div className={`popular-card animate`}></div>
+      <div className={`popular-card animate`}></div>
+      <div className={`popular-card animate`}></div>
+      <div className={`popular-card animate`}></div>
+      {/* // ))} */}
+      {/* <div className={`popular-card animate`}></div>
+      <div className={`popular-card animate`}></div>
+      <div className={`popular-card animate`}></div>
+      <div className={`popular-card animate`}></div> */}
+    </>
+  );
+}
+
+export default function VehicleTypeCard({ category, vehiclesData, history }) {
   return (
     <>
       <SectionTitle category={category} />
       <section className="popular">
-        {vehiclesData.length > 0 &&
+        {vehiclesData.length > 0 ? (
           vehiclesData.map((vehicle, idx) => (
             <Card
-              category={category}
               vehiclesData={vehicle}
               key={vehicle.id}
               index={idx}
+              history={history}
             />
-          ))}
+          ))
+        ) : (
+          <CardEmpty />
+        )}
       </section>
     </>
   );

@@ -8,9 +8,15 @@ function SectionTitle({ category }) {
   );
 }
 
-function Card({ vehiclesData, index }) {
+function Card({ vehiclesData, index, history }) {
   return (
-    <div className={`popular-card${index + 1}`}>
+    <div
+      className={`popular-card${index + 1}`}
+      style={{
+        backgroundImage: `url("../assets/images/default-vehicle.jpeg")`,
+      }}
+      onClick={() => history.push(`/vehicle/detail/${vehiclesData.id}`)}
+    >
       <div className="pc-text">
         <p className="pc-title">{vehiclesData.vehicle}</p>
         <p className="pc-location">{vehiclesData.location}</p>
@@ -19,7 +25,11 @@ function Card({ vehiclesData, index }) {
   );
 }
 
-export default function VehicleByCategoryCard({ category, vehiclesData }) {
+export default function VehicleByCategoryCard({
+  category,
+  vehiclesData,
+  history,
+}) {
   return (
     <>
       <SectionTitle category={category} />
@@ -31,6 +41,7 @@ export default function VehicleByCategoryCard({ category, vehiclesData }) {
               vehiclesData={vehicle}
               key={idx}
               index={idx}
+              history={history}
             />
           ))}
       </section>

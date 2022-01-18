@@ -5,54 +5,28 @@ import { Link } from "react-router-dom";
 
 class Header extends React.Component {
   state = {
-    accessToken: "",
+    userData: { token: "", name: "", role: 0, photo: "" },
   };
 
   logout = () => {
-    localStorage.removeItem("vehicle-rental-token");
+    // localStorage.removeItem("vehicle-rental-token");
+    localStorage.clear();
     this.setState({
-      accessToken: "",
+      userData: {},
     });
     console.log("logout");
   };
-
-  // componentDidUpdate() {
-  //   console.log("update");
-  // }
-
-  // componentDidMount() {
-  //   const { isAuthed } = this.state;
-  //   // if (isAuthed) this.getUserData();
-  //   if (isAuthed) {
-  //     const accessToken = JSON.parse(
-  //       localStorage.getItem("vehicle-rental-token")
-  //     );
-  //     const URL = `${process.env.REACT_APP_HOST}/users/detail`;
-  //     axios
-  //       .get(URL, { headers: { "x-access-token": accessToken } })
-  //       .then((response) => {
-  //         const { photo } = response.data.result.data[0];
-  //         console.log(photo);
-  //         if (photo)
-  //           this.setState({
-  //             accessToken: accessToken,
-  //             isAuthed: true,
-  //             profilePicture: `${process.env.REACT_APP_HOST}/${photo}`,
-  //           });
-  //         console.log(isAuthed);
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
-  //   }
-  // }
 
   componentDidMount() {
     const accessToken = JSON.parse(
       localStorage.getItem("vehicle-rental-token")
     );
 
-    this.setState({ token: accessToken });
+    this.setState({
+      userData: {
+        token: accessToken,
+      },
+    });
   }
 
   render() {

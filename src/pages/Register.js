@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 import "../assets/css/LoginRegister.css";
 
 import { register } from "../utils/auth";
@@ -42,7 +43,7 @@ function Register(props) {
           </Link>
         </section>
         <section className="right-section">
-          <form onSubmit={submitHandler}>
+          <form className="form-login-register" onSubmit={submitHandler}>
             <input
               type="name"
               className="custom-form fixed-width"
@@ -75,7 +76,7 @@ function Register(props) {
             <i className="icon-google"></i>Register with Google
           </button>
           <p className="login2 text-center">
-            Already have an account? <a href="login.html">Login</a> now
+            Already have an account? <Link to="/login">Login</Link> now
           </p>
         </section>
       </section>

@@ -10,28 +10,9 @@ export default class Profile extends React.Component {
   state = {
     accessToken: "",
     isAuthed: false,
-    userData: "",
+    userData: {},
     defaultProfilePicture: require("../assets/images/default.jpg"),
   };
-
-  // getUserData() {
-  //   const accessToken = JSON.parse(
-  //     localStorage.getItem("vehicle-rental-token")
-  //   );
-  //   const URL = `${process.env.REACT_APP_HOST}/users/detail`;
-  //   axios
-  //     .get(URL, { headers: { "x-access-token": accessToken } })
-  //     .then((response) => {
-  //       const data = response.data.result.data[0];
-  //       console.log(data);
-  //       this.setState({
-  //         user: data,
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }
 
   componentDidMount() {
     const accessToken = JSON.parse(
@@ -61,20 +42,20 @@ export default class Profile extends React.Component {
   }
 
   render() {
-    const { isAuthed, accessToken, userData, defaultProfilePicture } =
-      this.state;
+    const { userData, defaultProfilePicture } = this.state;
     console.log(defaultProfilePicture);
     return (
       <main>
         <Header
-          isAuthed={isAuthed}
-          accessToken={accessToken}
-          path={this.props.match.path}
+        // isAuthed={isAuthed}
+        // accessToken={accessToken}
+        // path={this.props.match.path}
         />
         <ProfileContent
-          isAuthed={isAuthed}
+          // isAuthed={isAuthed}
           userData={userData}
           defaultProfilePicture={defaultProfilePicture}
+          history={this.props.history}
         />
         <Footer />
       </main>

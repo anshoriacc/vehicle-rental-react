@@ -37,16 +37,16 @@ const Footer = () => {
         <div className="vehicles">
           <p className="footer-title">Vehicle</p>
           <p>
-            <Link to="">Popular</Link>
+            <Link to="/vehicle/popular">Popular</Link>
           </p>
           <p>
-            <Link to="">Bike</Link>
+            <Link to="/vehicle/bike">Bike</Link>
           </p>
           <p>
-            <Link to="">Car</Link>
+            <Link to="/vehicle/car">Car</Link>
           </p>
           <p>
-            <Link to="">Motorbike</Link>
+            <Link to="/vehicle/motorbike">Motorbike</Link>
           </p>
           <p>
             <Link to="">FAQs</Link>
