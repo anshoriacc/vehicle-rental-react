@@ -1,0 +1,27 @@
+.add-photo img {
+  width: 100%;
+}
+
+.add-vehicle-action {
+  margin-top: 2vmax;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  gap: 2vmax;
+}
+
+.add-action-button {
+  width: 100%;
+  height: 60px;
+  border-radius: 10px;
+}
+
+.add-custom-form,
+.add-custom-form:focus {
+  width: 100%;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  display: block;
+  font-weight: 400;
+  margin-bottom: 2vmax;
+}

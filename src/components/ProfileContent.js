@@ -19,7 +19,7 @@ function FormUser({ userData, history}) {
             <i className="icon-edit"></i>
           </div>
         </div>
-        <h1>Samantha Doe</h1>
+        <h1>{userData.name}</h1>
         <p className="info">{userData.email}</p>
         <p className="info">{userData.phone}</p>
         <p className="info">Has been active since 2021</p>

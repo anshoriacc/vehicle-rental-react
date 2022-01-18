@@ -15,58 +15,61 @@ export default function VehicleDetailContent({
         <h2>Detail</h2>
         <section className="vehicle">
           <section className="add-photo">
-            
+            <img src={require("../assets/images/add-photo.jpg")}></img>
           </section>
           <section className="detail">
-            <h1>{vehiclesData.name}</h1>
-            <h2 className="location">
-              {/* {vehiclesData.location.charAt(0).toUpperCase() +
-                vehiclesData.location.slice(1)} */}
-              {vehiclesData.location}
-            </h2>
-            <p className="availability">Available</p>
-            <p className="payment">No Prepayment</p>
-            {/* <p className="info">Capacity: 1 person</p> */}
-            <p className="info">
-              Type:{" "}
-              <Link
-                to={`/vehicle/${vehiclesData.category}`}
-                style={{ color: "inherit" }}
-              >
-                {vehiclesData.category}
-              </Link>
-            </p>
-            {/* <p className="info">Reservation before 2 PM</p> */}
-            <p className="price">Rp. {vehiclesData.price}/day</p>
-            <div className="count">
-              <button
-                className="btn btn-light count-button"
-                onClick={decrement}
-              >
-                -
-              </button>
-              <p>{counter}</p>
-              <button
-                className="btn btn-warning count-button"
-                onClick={increment}
-              >
-                +
-              </button>
-            </div>
+            <input
+              type="text"
+              className="add-custom-form"
+              id="display-name"
+              name="name"
+              placeholder="Vehicle name"
+            />
+            <input
+              type="text"
+              className="add-custom-form"
+              id="location"
+              name="location"
+              placeholder="Location"
+            />
+            <input
+              type="text"
+              className="add-custom-form"
+              id="Description"
+              name="description"
+              placeholder="Description"
+            />
+            <label htmlFor="price">Price</label>
+            <input
+              type="text"
+              className="add-custom-form"
+              id="price"
+              name="price"
+              placeholder="Price"
+            />
+            <select
+              className="input-form form-size"
+              name="location"
+              id="location"
+            >
+              <option value="0">Location</option>
+              <option value="1">Jakarta</option>
+              <option value="2">Bandung</option>
+              <option value="3">Yogyakarta</option>
+              <option value="4">Malang</option>
+              <option value="5">Surabaya</option>
+            </select>
           </section>
         </section>
-        <section className="action">
-          <button className="btn btn-dark text-warning button action-button">
-            Chat Admin
+        <section className="add-vehicle-action">
+          <button className="btn btn-dark text-warning button add-action-button">
+            Add item to
           </button>
           <button
-            className="btn btn-warning button action-button"
+            className="btn btn-warning button add-action-button"
             onClick={() => history.push()}
           >
-            Book
-          </button>
-          <button className="btn btn-dark text-warning button action-button icon-button">
-            <i className="icon-like"></i> Like
+            Save item
           </button>
         </section>
       </section>
