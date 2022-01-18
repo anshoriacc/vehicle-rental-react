@@ -13,7 +13,7 @@ function Card({ vehiclesData, index, history }) {
     <div
       className={`popular-card${index + 1}`}
       style={{
-        backgroundImage: `url("../assets/images/default-vehicle.jpeg")`,
+        backgroundImage: `url("https://teja9.kuikr.com/images/car/default-cars.jpeg")`,
       }}
       onClick={() => history.push(`/vehicle/detail/${vehiclesData.id}`)}
     >
