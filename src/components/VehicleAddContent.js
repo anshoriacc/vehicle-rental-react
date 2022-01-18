@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function VehicleDetailContent({
-  vehiclesData,
   counter,
   decrement,
   increment,
@@ -12,12 +11,12 @@ export default function VehicleDetailContent({
   return (
     <>
       <section className="content">
-        <h2>Detail</h2>
+        <h2>Add vehicle</h2>
         <section className="vehicle">
           <section className="add-photo">
             <img src={require("../assets/images/add-photo.jpg")}></img>
           </section>
-          <section className="detail">
+          <section className="add-detail">
             <input
               type="text"
               className="add-custom-form"
@@ -47,10 +46,11 @@ export default function VehicleDetailContent({
               name="price"
               placeholder="Price"
             />
+            <label htmlFor="location-add">Location</label>
             <select
               className="input-form form-size"
               name="location"
-              id="location"
+              id="location-add"
             >
               <option value="0">Location</option>
               <option value="1">Jakarta</option>
@@ -59,6 +59,21 @@ export default function VehicleDetailContent({
               <option value="4">Malang</option>
               <option value="5">Surabaya</option>
             </select>
+            <div className="count mt-3">
+              <button
+                className="btn btn-light count-button"
+                onClick={decrement}
+              >
+                -
+              </button>
+              <p>{counter}</p>
+              <button
+                className="btn btn-warning count-button"
+                onClick={increment}
+              >
+                +
+              </button>
+            </div>
           </section>
         </section>
         <section className="add-vehicle-action">

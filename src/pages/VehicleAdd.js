@@ -9,7 +9,6 @@ import { addVehicle } from "../utils/vehicle";
 export default class VehicleAdd extends Component {
   state = {
     userData: { token: "", name: "", role: 0, photo: "" },
-    vehiclesData: {},
     counter: 0,
   };
 
@@ -54,7 +53,6 @@ export default class VehicleAdd extends Component {
       <main>
         <Header />
         <VehicleAddContent
-          vehiclesData={this.state.vehiclesData}
           counter={this.state.counter}
           decrement={this.countDecrement}
           increment={this.countIncrement}
