@@ -40,7 +40,7 @@ class Login extends React.Component {
       this.props.history.push("/");
     }
     if (this.props.auth.isRejected === true) {
-      console.log("wakwawww");
+      // console.log("wakwawww");
     }
   }
 

@@ -46,7 +46,7 @@ button.fixed-width {
   justify-content: center;
 }
 
-.form-login-register{
+.form-login-register {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -55,10 +55,11 @@ button.fixed-width {
 .custom-form,
 .custom-form:focus {
   padding-left: 1rem;
-  background-color: #ffffff80;
+  background-color: #ffffff4d;
   border: 0px;
   color: #fff;
   border-radius: 10px;
+  outline: none;
 }
 
 .custom-form::placeholder {

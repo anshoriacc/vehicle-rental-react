@@ -15,6 +15,7 @@ function Register(props) {
       email: e.target.email.value,
       password: e.target.password.value,
     };
+
     register(body)
       .then((response) => {
         // const token = response.data.result.data.token;
@@ -23,6 +24,7 @@ function Register(props) {
       })
       .catch((err) => console.error(err));
   };
+  
   return (
     <>
       <section className="main">

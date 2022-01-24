@@ -14,91 +14,22 @@ export default function VehicleDetailContent({
       <section className="content">
         <h2>Detail</h2>
         <section className="vehicle">
-          <section className="photo">
-            <div
-              id="carousel-thumb"
-              className="carousel slide carousel-fade carousel-thumbnails"
-              data-ride="carousel"
-            >
-              {/* <!--Slides--> */}
-              <div className="carousel-inner" role="listbox">
-                <div className="carousel-item active">
-                  <img
-                    className="d-block w-100"
-                    src={require("../assets/images/default-vehicle.jpeg")}
-                    alt="First slide"
-                  />
-                </div>
-                <div className="carousel-item">
-                  <img
-                    className="d-block w-100"
-                    src={require("../assets/images/default-vehicle.jpeg")}
-                    alt="Second slide"
-                  />
-                </div>
-                <div className="carousel-item">
-                  <img
-                    className="d-block w-100"
-                    src={require("../assets/images/default-vehicle.jpeg")}
-                    alt="Third slide"
-                  />
-                </div>
-              </div>
-              {/* <!--/.Slides-->
-              <!--Controls--> */}
-              <a
-                className="carousel-control-prev"
-                href="#carousel-thumb"
-                role="button"
-                data-slide="prev"
-              >
-                <span
-                  className="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span className="sr-only">Previous</span>
-              </a>
-              <a
-                className="carousel-control-next"
-                href="#carousel-thumb"
-                role="button"
-                data-slide="next"
-              >
-                <span
-                  className="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span className="sr-only">Next</span>
-              </a>
-              {/* <!--/.Controls--> */}
-              <ol className="carousel-indicators">
-                <li
-                  data-target="#carousel-thumb"
-                  data-slide-to="0"
-                  className="active"
-                >
-                  <img
-                    className="d-block w-100 img-fluid"
-                    src={require("../assets/images/default-vehicle.jpeg")}
-                    alt="first thumbnail"
-                  />
-                </li>
-                <li data-target="#carousel-thumb" data-slide-to="1">
-                  <img
-                    className="d-block w-100 img-fluid"
-                    src={require("../assets/images/default-vehicle.jpeg")}
-                    alt="second thumbnail"
-                  />
-                </li>
-                <li data-target="#carousel-thumb" data-slide-to="2">
-                  <img
-                    className="d-block w-100 img-fluid"
-                    src={require("../assets/images/default-vehicle.jpeg")}
-                    alt="third thumbnail"
-                  />
-                </li>
-              </ol>
-            </div>
+          <section className="vehicle-photo">
+            <img
+              src={require("../assets/images/add-photo.jpg")}
+              id="vehicle-photo1"
+              alt="vehiclePhoto"
+            ></img>
+            <img
+              src={require("../assets/images/add-photo.jpg")}
+              id="vehicle-photo2"
+              alt="vehiclePhoto"
+            ></img>
+            <img
+              src={require("../assets/images/add-photo.jpg")}
+              id="vehicle-photo3"
+              alt="vehiclePhoto"
+            ></img>
           </section>
           <section className="detail">
             <h1>{vehiclesData.name}</h1>

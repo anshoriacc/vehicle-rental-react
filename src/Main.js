@@ -16,19 +16,21 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
 import VehicleAdd from "./pages/VehicleAdd";
+import VehicleEdit from "./pages/VehicleEdit";
 import VehicleDetail from "./pages/VehicleDetail";
 import History from "./pages/History";
 import Vehicle from "./pages/Vehicle";
 import VehicleByCategory from "./pages/VehicleByCategory";
 import Search from "./pages/Search";
+import ChatRoom from "./pages/ChatRoom";
+import ChatList from "./pages/ChatList";
 
 export default class Main extends React.Component {
   state = {
     token: "",
-    // name: "",
-    // email: "",
-    // role: 0,
-    // photo: "",
+    name: "",
+    role: 0,
+    photo: "",
   };
 
   componentDidMount() {
@@ -46,7 +48,6 @@ export default class Main extends React.Component {
     const accessToken = JSON.parse(
       localStorage.getItem("vehicle-rental-token")
     );
-
     const role = JSON.parse(localStorage.getItem("vehicle-rental-role"));
 
     return (
@@ -57,9 +58,15 @@ export default class Main extends React.Component {
             <Home />
           </Route> */}
             <Route path="/" exact component={Home} />
-            <Route path="/register" component={Register} />
-            <Route path="/forgot" component={ForgotPassword} />
+            {/* <Route path="/register" component={Register} /> */}
             {/* <Route path="/login" component={Login} /> */}
+            <Route
+              path="/register"
+              render={(routerProps) => {
+                if (!accessToken) return <Register {...routerProps} />;
+                return <Redirect from="/register" to="/" />;
+              }}
+            />
             <Route
               path="/login"
               render={(routerProps) => {
@@ -67,6 +74,7 @@ export default class Main extends React.Component {
                 return <Redirect from="/login" to="/" />;
               }}
             />
+            <Route path="/forgot" component={ForgotPassword} />
             <Route
               path="/profile/editpassword"
               render={(routerProps) => {
@@ -82,8 +90,24 @@ export default class Main extends React.Component {
                 return <Profile {...routerProps} />;
               }}
             />
-            <Route path="/history" component={History} />
+            <Route
+              path="/profile/edit"
+              render={(routerProps) => {
+                if (!accessToken)
+                  return <Redirect from="/profile/edit" to="/" />;
+                return <Profile {...routerProps} />;
+              }}
+            />
+            <Route
+              path="/history"
+              render={(routerProps) => {
+                if (!accessToken) return <Redirect from="/history" to="/" />;
+                return <History {...routerProps} />;
+              }}
+            />
             <Route path="/search" component={Search} />
+            <Route path="/chat" exact component={ChatList} />
+            <Route path="/chat/detail" exact component={ChatRoom} />
             <Route
               path="/vehicle/add"
               render={(routerProps) => {
@@ -91,6 +115,15 @@ export default class Main extends React.Component {
                 return <VehicleAdd {...routerProps} />;
               }}
             />
+            <Route
+              path="/vehicle/edit/:id"
+              render={(routerProps) => {
+                if (role !== 3)
+                  return <Redirect from="/vehicle/edit/:id" to="/" />;
+                return <VehicleEdit {...routerProps} />;
+              }}
+            />
+            {/* <Route path="/vehicle/edit/:id" exact component={VehicleDetail} /> */}
             <Route path="/vehicle/detail/:id" exact component={VehicleDetail} />
             <Route path="/vehicle/:category" component={VehicleByCategory} />
             <Route path="/vehicle" exact component={Vehicle} />

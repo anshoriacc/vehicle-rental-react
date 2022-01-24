@@ -38,6 +38,25 @@ p {
   margin: 0;
 }
 
+.fw-900 {
+  font-weight: 900;
+}
+
+.icon-previous {
+  content: url("../icons/icon-previous.png");
+  height: 2rem;
+}
+
+.icon-previous-black {
+  content: url("../icons/icon-previous.png");
+  height: 2rem;
+  filter: invert(1);
+}
+
+.icon-large {
+  height: 3rem;
+}
+
 /* scrollbar */
 ::-webkit-scrollbar {
   width: 10px;

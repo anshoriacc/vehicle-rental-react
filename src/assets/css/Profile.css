@@ -53,8 +53,12 @@
   border-right: none;
   display: block;
   font-weight: 400;
+  outline: none;
 }
-
+.profile-custom-form:disabled {
+  cursor: not-allowed;
+  background-color: initial;
+}
 .form-check-input:checked {
   background-color: #ffcd61;
   border-color: #ffcd61;

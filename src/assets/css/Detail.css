@@ -6,12 +6,31 @@
 }
 
 /* carousel */
-#carousel-thumb {
-  height: calc(100vw - 15vmax);
+.vehicle-photo {
+  display: grid;
+  grid-template-areas:
+    "a a"
+    "b c";
+  gap: 1rem;
 }
 
-.sr-only {
-  font-size: 0px;
+.vehicle-photo img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+#vehicle-photo1 {
+  grid-area: a;
+}
+
+#vehicle-photo2 {
+  grid-area: b;
+}
+
+#vehicle-photo3 {
+  grid-area: c;
 }
 
 /* detail */

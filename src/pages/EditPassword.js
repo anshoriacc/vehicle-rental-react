@@ -6,10 +6,10 @@ import Footer from "../components/Footer";
 export default class EditPassword extends Component {
   submitHandler = (e) => {
     e.preventDefault();
-    const body = {
-      oldpassword: e.target.oldpassword.value,
-      newpassword: e.target.newpassword.value,
-    };
+    // const body = {
+    //   oldpassword: e.target.oldpassword.value,
+    //   newpassword: e.target.newpassword.value,
+    // };
 
     
   };

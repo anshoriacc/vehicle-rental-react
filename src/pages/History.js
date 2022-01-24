@@ -1,13 +1,15 @@
 import React from "react";
-import "../assets/css/Profile.css";
+import "../assets/css/History.css";
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import HistoryCard from "../components/HistoryCard";
 
-export default class Profile extends React.Component {
+// import reservation "../utils/reservation"
+
+export default class History extends React.Component {
   state = {
-    accessToken: "",
-    isAuthed: false,
+    token: "",
     historyData: "",
   };
 
@@ -18,8 +20,7 @@ export default class Profile extends React.Component {
 
     if (accessToken) {
       this.setState({
-        accessToken: accessToken,
-        isAuthed: true,
+        token: accessToken,
       });
     }
 
@@ -42,9 +43,48 @@ export default class Profile extends React.Component {
     // const { isAuthed, accessToken } = this.state;
     return (
       <>
-        <Header
-        />
-        <section className="content"></section>
+        <Header path={this.props.match.path} />
+        <section className="content history-container">
+          <section className="history-left">
+            <form className="search-bar-vehicle">
+              <input
+                name="keyword"
+                type="search"
+                className="search-input-vehicle"
+                placeholder="Search..."
+              />
+              <button type="submit" className="search-button-vehicle">
+                Search
+              </button>
+            </form>
+            <section className="history-list">
+              <HistoryCard historyData={this.state.historyData} />
+            </section>
+          </section>
+          <section className="new-arrival">
+            <h2>New Arrival</h2>
+            <div className="new-arrival-card">
+              <img
+                src={require("../assets/images/lambhorgini.jpg")}
+                alt="new-arrival"
+              ></img>
+              <div className="na-card-text">
+                <p className="na-card-title">Lambhorgini</p>
+                <p className="na-card-location">Jakarta</p>
+              </div>
+            </div>
+            <div className="new-arrival-card">
+              <img
+                src={require("../assets/images/default-vehicle.jpg")}
+                alt="new-arrival"
+              ></img>
+              <div className="na-card-text">
+                <p className="na-card-title">White Jeep</p>
+                <p className="na-card-location">tes</p>
+              </div>
+            </div>
+          </section>
+        </section>
         <Footer />
       </>
     );

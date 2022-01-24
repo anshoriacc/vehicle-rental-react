@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-import "../assets/css/Home.css";
+import "../assets/css/Vehicle.css";
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -10,7 +10,7 @@ import { getVehicle4 } from "../utils/vehicle";
 
 export default class Vehicle extends React.Component {
   state = {
-    accessToken: "",
+    token: "",
     popularVehiclesData: "",
     bikeVehiclesData: "",
     carVehiclesData: "",
@@ -22,12 +22,13 @@ export default class Vehicle extends React.Component {
   //   }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     const accessToken = JSON.parse(
       localStorage.getItem("vehicle-rental-token")
     );
     if (accessToken) {
       this.setState({
-        accessToken: accessToken,
+        token: accessToken,
       });
     }
 
@@ -64,12 +65,24 @@ export default class Vehicle extends React.Component {
     return (
       <main>
         <Header
-        // isAuthed={isAuthed}
-        // accessToken={accessToken}
-        // path={this.props.match.path}
+          // isAuthed={isAuthed}
+          // accessToken={accessToken}
+          path={this.props.match.path}
         />
 
         <section className="content">
+          <form className="search-bar-vehicle">
+            <input
+              name="keyword"
+              type="search"
+              className="search-input-vehicle"
+              placeholder="Search..."
+            />
+            <button type="submit" className="search-button-vehicle">
+              Search
+            </button>
+          </form>
+
           <VehicleTypeCard
             category="popular"
             vehiclesData={popularVehiclesData}

@@ -1,31 +1,44 @@
 import React from "react";
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 // import axios from "axios";
 
-class Header extends React.Component {
+export default class Header extends React.Component {
   state = {
-    userData: { token: "", name: "", role: 0, photo: "" },
+    token: "",
+    name: "",
+    role: 0,
+    photo: "",
   };
 
   logout = () => {
     // localStorage.removeItem("vehicle-rental-token");
     localStorage.clear();
     this.setState({
-      userData: {},
+      ...this.state,
+      token: "",
+      name: "",
+      role: 0,
+      photo: "",
     });
     console.log("logout");
   };
+
+  componentDidUpdate() {}
 
   componentDidMount() {
     const accessToken = JSON.parse(
       localStorage.getItem("vehicle-rental-token")
     );
+    const name = JSON.parse(localStorage.getItem("vehicle-rental-name"));
+    const role = JSON.parse(localStorage.getItem("vehicle-rental-role"));
+    const photo = JSON.parse(localStorage.getItem("vehicle-rental-photo"));
 
     this.setState({
-      userData: {
-        token: accessToken,
-      },
+      ...this.state,
+      token: accessToken,
+      name: name,
+      role: role,
+      photo: photo,
     });
   }
 
@@ -33,6 +46,13 @@ class Header extends React.Component {
     const accessToken = JSON.parse(
       localStorage.getItem("vehicle-rental-token")
     );
+    // const name = JSON.parse(localStorage.getItem("vehicle-rental-name"));
+    // const role = JSON.parse(localStorage.getItem("vehicle-rental-role"));
+    const photo = JSON.parse(localStorage.getItem("vehicle-rental-photo"));
+
+    // const accessToken = this.props.auth.userData.token || null;
+    // const photo = this.props.auth.userData.photo || null;
+
     return (
       <header>
         <nav className="navbar navbar-expand-sm navbar-light p-0">
@@ -91,11 +111,11 @@ class Header extends React.Component {
                     History
                   </Link>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <Link to="" className="nav-link" aria-current="page">
                     About
                   </Link>
-                </li>
+                </li> */}
                 <hr className="line-nav" />
                 {!accessToken ? (
                   <div className="button-login-register">
@@ -108,15 +128,15 @@ class Header extends React.Component {
                   </div>
                 ) : (
                   <div className="button-email-profile">
-                    <Link to="" className="hide-text">
+                    <Link to="/chat" className="hide-text">
                       <i className="icon-email email"></i>Email
                     </Link>
                     <div className="dropdown">
                       <img
                         src={
-                          !this.props.auth.userData.photo
-                            ? require("../assets/images/default.jpg")
-                            : `${process.env.REACT_APP_HOST}/${this.props.auth.userData.photo}`
+                          photo
+                            ? `${process.env.REACT_APP_HOST}/${photo}`
+                            : require("../assets/images/default.jpg")
                         }
                         className="icon-profile dropbtn"
                         alt="profile"
@@ -143,11 +163,3 @@ class Header extends React.Component {
     );
   }
 }
-
-const mapStateToProps = (state) => {
-  return {
-    auth: state.auth,
-  };
-};
-
-export default connect(mapStateToProps)(Header);

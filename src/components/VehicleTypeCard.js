@@ -28,19 +28,12 @@ function Card({ vehiclesData, index, history }) {
 }
 
 function CardEmpty() {
-  // const arr = [1, 2, 3, 4];
   return (
     <>
-      {/* {arr.map(()=>( */}
       <div className={`popular-card animate`}></div>
       <div className={`popular-card animate`}></div>
       <div className={`popular-card animate`}></div>
       <div className={`popular-card animate`}></div>
-      {/* // ))} */}
-      {/* <div className={`popular-card animate`}></div>
-      <div className={`popular-card animate`}></div>
-      <div className={`popular-card animate`}></div>
-      <div className={`popular-card animate`}></div> */}
     </>
   );
 }

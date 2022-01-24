@@ -19,13 +19,13 @@ function ForgotPassword() {
         <form className="form-forgotpassword" onSubmit>
           <input
             type="email"
-            className="custom-form custom-size"
+            className="custom-form custom-size-forgot"
             placeholder="Enter your email address"
             name="email"
             id="email"
             required
           />
-          <button type="submit" className="btn btn-warning custom-size fw-900">
+          <button type="submit" className="btn btn-warning custom-size-forgot fw-900">
             Send Link
           </button>
         </form>

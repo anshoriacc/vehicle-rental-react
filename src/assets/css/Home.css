@@ -10,12 +10,17 @@
   font-weight: 900;
 }
 
-hr.finder-line {
-  border-top: 1px solid red;
-  background-color: red;
-  width: 2rem;
-  margin: 0;
+h1#explore {
   margin-bottom: 3rem;
+}
+
+hr.finder-line {
+  border-top: 2px solid white;
+  /* background-color: red; */
+  width: 2rem;
+  margin: 1rem 0 2rem;
+  /* margin-bottom: 3rem; */
+  opacity: 1;
 }
 
 .finder button {
@@ -68,6 +73,10 @@ hr.finder-line {
   font-weight: 900;
 }
 
+.input-form:focus {
+  outline: none;
+}
+
 .input-form option {
   color: #000;
 }
@@ -78,6 +87,13 @@ hr.finder-line {
 
 ::-webkit-calendar-picker-indicator {
   filter: invert(1);
+}
+
+.add-vehicle {
+  width: 100%;
+  height: 60px;
+  border-radius: 10px;
+  margin: 1.5rem 0;
 }
 
 /* content (popular & testimony)*/
@@ -115,6 +131,10 @@ hr.finder-line {
   cursor: pointer;
 }
 
+[class^="popular-card"]:hover {
+  box-shadow: 0 0 5px #0000004d;
+}
+
 .pc-text {
   font-size: calc(0.5rem + 0.6vmax);
   width: 50%;
@@ -124,9 +144,6 @@ hr.finder-line {
   background-color: #fff;
   position: absolute;
   bottom: 0px;
-  white-space: nowrap;
-  overflow-x: hidden;
-  text-overflow: clip;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -134,6 +151,14 @@ hr.finder-line {
 
 .pc-title {
   font-weight: 600;
+}
+
+.pc-title,
+.pc-location {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .testimony {

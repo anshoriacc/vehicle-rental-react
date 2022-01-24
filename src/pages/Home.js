@@ -8,17 +8,13 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import VehicleTypeCard from "../components/VehicleTypeCard";
 import Testimony from "../components/Testimony";
+
 import { getVehicle4 } from "../utils/vehicle";
 
 class Home extends React.Component {
   state = {
-    userData: {
-      token: "",
-      name: "",
-      role: 0,
-      photo: "",
-    },
-    // accessToken: "",
+    token: "",
+    role: 0,
     vehiclesData: "",
   };
 
@@ -29,9 +25,7 @@ class Home extends React.Component {
     // console.log(userData);
 
     if (accessToken) {
-      this.setState({
-        userData: { token: accessToken },
-      });
+      this.setState({ token: accessToken });
     }
 
     getVehicle4("popular")
@@ -52,13 +46,13 @@ class Home extends React.Component {
     return (
       <main>
         <Header
-        // isAuthed={isAuthed}
-        // accessToken={accessToken}
-        // path={this.props.match.path}
+          // isAuthed={isAuthed}
+          // accessToken={accessToken}
+          path={this.props.match.path}
         />
         <section className="finder-container">
           <section className="finder-content">
-            <h1>
+            <h1 id="explore">
               <p>Explore and</p>
               <p>Travel</p>
             </h1>
@@ -77,7 +71,9 @@ class Home extends React.Component {
                 name="location"
                 id="location"
               >
-                <option value="0">Location</option>
+                <option value="" disabled selected hidden>
+                  Location
+                </option>
                 <option value="1">Jakarta</option>
                 <option value="2">Bandung</option>
                 <option value="3">Yogyakarta</option>
@@ -88,7 +84,7 @@ class Home extends React.Component {
                 className="input-form form-size"
                 type="date"
                 id="date"
-                name="date"
+                // name="date"
               />
               <button
                 type="submit"
@@ -107,7 +103,7 @@ class Home extends React.Component {
           />
           {role === 3 && (
             <Link to="/vehicle/add">
-              <button className="btn btn-dark text-warning add-vehicle w-100 mt-4 mb-4">
+              <button className="btn btn-dark text-warning add-vehicle fw-900">
                 Add Vehicle
               </button>
             </Link>

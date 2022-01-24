@@ -14,6 +14,7 @@ export default class VehicleByCategory extends React.Component {
   };
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     const accessToken = JSON.parse(
       localStorage.getItem("vehicle-rental-token")
     );
