@@ -15,7 +15,7 @@ export default function ReservationContent({
   const bookHandler = (e) => {
     e.preventDefault();
     const body = {
-      vehicle_id: params.id,
+      vehicle_id: params,
       quantity: counter,
       payment: "transfer",
     };
@@ -23,7 +23,6 @@ export default function ReservationContent({
     makeReservation(token, body)
       .then((response) => {
         console.log("berhasil", response);
-
       })
       .catch((error) => {
         console.log(error);

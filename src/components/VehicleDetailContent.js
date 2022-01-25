@@ -88,7 +88,11 @@ export default function VehicleDetailContent({
           </button>
           <button
             className="btn btn-warning button action-button"
-            onClick={() => history.push()}
+            onClick={() =>
+              history.push(
+                `/vehicle/detail/${vehiclesData.id}/reservation/payment`
+              )
+            }
           >
             Book
           </button>

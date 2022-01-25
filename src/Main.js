@@ -25,6 +25,7 @@ import VehicleByCategory from "./pages/VehicleByCategory";
 import Search from "./pages/Search";
 import ChatRoom from "./pages/ChatRoom";
 import ChatList from "./pages/ChatList";
+import Payment from "./pages/Payment";
 
 export default class Main extends React.Component {
   state = {
@@ -122,6 +123,19 @@ export default class Main extends React.Component {
                 if (role !== 3)
                   return <Redirect from="/vehicle/edit/:id" to="/" />;
                 return <VehicleEdit {...routerProps} />;
+              }}
+            />
+            <Route
+              path="/vehicle/detail/:id/reservation/payment"
+              render={(routerProps) => {
+                if (role !== 2)
+                  return (
+                    <Redirect
+                      from="/vehicle/detail/:id/reservation/payment"
+                      to="/"
+                    />
+                  );
+                return <Payment {...routerProps} />;
               }}
             />
             <Route
