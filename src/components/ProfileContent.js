@@ -147,7 +147,12 @@ function FormUser({ userData, history }) {
           >
             Edit Password
           </button>
-          <button className="btn btn-light action-button">Cancel</button>
+          <button
+            className="btn btn-light action-button"
+            style={{ backgroundColor: "#c4c4c4" }}
+          >
+            Cancel
+          </button>
         </section>
       </form>
     </section>

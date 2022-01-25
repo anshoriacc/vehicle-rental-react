@@ -114,7 +114,7 @@ button.icon-button {
   /* content */
   .vehicle {
     display: grid;
-    grid-template-columns: 50% auto;
+    grid-template-columns: 35% auto;
     grid-gap: 2vmax;
   }
 
