@@ -9,7 +9,7 @@ import { getVehicleDetail } from "../utils/vehicle";
 export default class VehicleDetail extends Component {
   state = {
     userData: { token: "", name: "", role: 0, photo: "" },
-    vehiclesData: {},
+    vehiclesData: [],
     counter: 0,
   };
 
@@ -23,6 +23,10 @@ export default class VehicleDetail extends Component {
     if (number < this.state.vehiclesData.stock)
       this.setState({ counter: number + 1 });
   };
+
+  componentDidUpdate() {
+    console.log(this.state.vehiclesData);
+  }
 
   componentDidMount() {
     const accessToken = JSON.parse(
