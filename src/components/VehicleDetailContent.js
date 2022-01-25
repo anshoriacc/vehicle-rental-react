@@ -90,15 +90,15 @@ export default function VehicleDetailContent({
             className="btn btn-warning button action-button"
             onClick={() =>
               history.push(
-                `/vehicle/detail/${vehiclesData.id}/reservation/payment`
+                `/vehicle/detail/${vehiclesData.id}/reservation`
               )
             }
           >
             Book
           </button>
-          <button className="btn btn-dark text-warning button action-button icon-button">
+          {/* <button className="btn btn-dark text-warning button action-button icon-button">
             <i className="icon-like"></i> Like
-          </button>
+          </button> */}
         </section>
       </section>
     </>

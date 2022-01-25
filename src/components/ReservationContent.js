@@ -15,15 +15,17 @@ export default function ReservationContent({
   const bookHandler = (e) => {
     e.preventDefault();
     const body = {
-      vehicle_id: params.id,
+      vehicle_id: params,
       quantity: counter,
       payment: "transfer",
+      start_date: e.target.start_date.value,
+      return_date: e.target.return_date.value,
     };
 
+    console.log(body);
     makeReservation(token, body)
       .then((response) => {
         console.log("berhasil", response);
-
       })
       .catch((error) => {
         console.log(error);
@@ -35,18 +37,19 @@ export default function ReservationContent({
     <>
       <section className="content">
         <h2>Reservation</h2>
-        <section className="vehicle">
-          <section className="vehicle-photo">
-            <img
-              src={
-                vehiclesData.photo
-                  ? `${process.env.REACT_APP_HOST}/${vehiclesData.photo[0]}`
-                  : require("../assets/images/default-vehicle.jpg")
-              }
-              id="vehicle-photo1"
-              alt="vehiclePhoto"
-            ></img>
-            <img
+        <form onSubmit={bookHandler}>
+          <section className="vehicle">
+            <section className="vehicle-photo">
+              <img
+                src={
+                  vehiclesData.photo
+                    ? `${process.env.REACT_APP_HOST}/${vehiclesData.photo[0]}`
+                    : require("../assets/images/default-vehicle.jpg")
+                }
+                id="vehicle-photo1"
+                alt="vehiclePhoto"
+              ></img>
+              {/* <img
               src={
                 vehiclesData.photo
                   ? `${process.env.REACT_APP_HOST}/${vehiclesData.photo[1]}`
@@ -63,50 +66,66 @@ export default function ReservationContent({
               }
               id="vehicle-photo3"
               alt="vehiclePhoto"
-            ></img>
-          </section>
-          <section className="detail">
-            <h1>{vehiclesData.name}</h1>
-            <h2 className="location">
-              {/* {vehiclesData.location.charAt(0).toUpperCase() +
+            ></img> */}
+            </section>
+            <section className="detail">
+              <h1>{vehiclesData.name}</h1>
+              <h2 className="location">
+                {/* {vehiclesData.location.charAt(0).toUpperCase() +
                 vehiclesData.location.slice(1)} */}
-              {vehiclesData.location}
-            </h2>
-            <p className="payment">No Prepayment</p>
-            {/* <p className="info">
+                {vehiclesData.location}
+              </h2>
+              <p className="payment">No Prepayment</p>
+              {/* <p className="info">
               Type:{" "}
               <Link
-                to={`/vehicle/${vehiclesData.category}`}
-                style={{ color: "inherit" }}
+              to={`/vehicle/${vehiclesData.category}`}
+              style={{ color: "inherit" }}
               >
-                {vehiclesData.category}
+              {vehiclesData.category}
               </Link>
             </p> */}
-            {/* <p className="info">Reservation before 2 PM</p> */}
-            {/* <p className="price">Rp. {vehiclesData.price}/day</p> */}
-            <div className="count">
-              <button
-                className="btn btn-light count-button"
-                onClick={decrement}
-              >
-                -
-              </button>
-              <p>{counter}</p>
-              <button
-                className="btn btn-warning count-button"
-                onClick={increment}
-              >
-                +
-              </button>
-            </div>
+              {/* <p className="info">Reservation before 2 PM</p> */}
+              {/* <p className="price">Rp. {vehiclesData.price}/day</p> */}
+              <div className="count">
+                <button
+                  className="btn btn-light count-button"
+                  onClick={decrement}
+                >
+                  -
+                </button>
+                <p>{counter}</p>
+                <button
+                  className="btn btn-warning count-button"
+                  onClick={increment}
+                >
+                  +
+                </button>
+              </div>
+              <input
+                name="start_date"
+                className="input-form form-size"
+                type="date"
+                id="date"
+                // name="date"
+              />
+              <input
+                name="return_date"
+                className="input-form form-size"
+                type="date"
+                id="date"
+                // name="date"
+              />
+            </section>
           </section>
-        </section>
-        <button
-          className="btn btn-warning button action-button w-100"
-          onClick={bookHandler}
-        >
-          {`Pay now: Rp. ${counter * vehiclesData.price}`}
-        </button>
+          <button
+            type="submit"
+            className="btn btn-warning button action-button w-100"
+            // onClick={bookHandler}
+          >
+            {`Pay now: Rp. ${counter * vehiclesData.price}`}
+          </button>
+        </form>
       </section>
     </>
   );

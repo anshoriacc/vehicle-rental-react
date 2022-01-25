@@ -25,7 +25,7 @@ export default class VehicleDetail extends Component {
   };
 
   componentDidUpdate() {
-    console.log(this.state.vehiclesData);
+    // console.log(this.state.vehiclesData);
   }
 
   componentDidMount() {
@@ -44,7 +44,7 @@ export default class VehicleDetail extends Component {
         this.setState({
           vehiclesData: response.data.result.data[0],
         });
-        console.log(response.data.result.data[0]);
+        // console.log(response.data.result.data[0]);
       })
       .catch((error) => {
         console.log(error);

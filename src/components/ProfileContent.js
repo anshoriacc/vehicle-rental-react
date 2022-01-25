@@ -159,7 +159,7 @@ function FormUser({ userData, history }) {
   );
 }
 
-export default function ProfileContent({ isAuthed, userData, history }) {
+export default function ProfileContent({ userData, history }) {
   // if (!isAuthed) return <Redirect to="/" />;
   return <FormUser userData={userData} history={history} />;
 }

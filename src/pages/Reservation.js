@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../assets/css/Detail.css";
+import "../assets/css/Reservation.css";
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -36,14 +36,14 @@ export default class Reservation extends Component {
 
     if (accessToken) {
       this.setState({
-        userData: { token: accessToken },
+        token: accessToken,
       });
     }
 
     // console.log(this.props.match.params.id);
     getVehicleDetail(this.props.match.params.id)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         this.setState({
           vehiclesData: response.data.result.data[0],
         });

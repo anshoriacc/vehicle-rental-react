@@ -7,7 +7,7 @@ export const history = (accessToken) => {
 
 export const makeReservation = (accessToken, body) => {
   const URL = `${process.env.REACT_APP_HOST}/reservation`;
-  return axios.post(URL, { headers: { "x-access-token": accessToken } }, body);
+  return axios.post(URL, body, { headers: { "x-access-token": accessToken } });
 };
 
 export const reservationDetail = (accessToken, reservationId) => {
