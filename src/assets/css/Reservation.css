@@ -1,0 +1,10 @@
+.reservation-date {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+input[type="date"] {
+    border-radius: 10px;
+    width: 50%;
+}

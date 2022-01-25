@@ -85,20 +85,22 @@ export default function ReservationContent({
                   +
                 </button>
               </div>
-              <input
-                name="start_date"
-                className="input-form form-size"
-                type="date"
-                id="date"
-                // name="date"
-              />
-              <input
-                name="return_date"
-                className="input-form form-size"
-                type="date"
-                id="date"
-                // name="date"
-              />
+              <div className="reservation-date">
+                <input
+                  name="start_date"
+                  className="input-form form-size"
+                  type="date"
+                  // id="date"
+                  // name="date"
+                />
+                <input
+                  name="return_date"
+                  className="input-form form-size"
+                  type="date"
+                  // id="date"
+                  // name="date"
+                />
+              </div>
             </section>
           </section>
           <button
