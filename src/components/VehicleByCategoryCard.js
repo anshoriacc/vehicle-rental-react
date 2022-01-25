@@ -9,6 +9,8 @@ function SectionTitle({ category }) {
 }
 
 function Card({ vehiclesData, index, history }) {
+  const photo = JSON.parse(vehiclesData.photo);
+
   return (
     <div
       className={`popular-card${index + 1}`}
@@ -16,8 +18,8 @@ function Card({ vehiclesData, index, history }) {
     >
       <img
         src={
-          vehiclesData.photo
-            ? `${process.env.REACT_APP_HOST}/${vehiclesData.photo[0]}`
+          photo
+            ? `${process.env.REACT_APP_HOST}/${photo[0]}`
             : require("../assets/images/default-vehicle.jpg")
         }
         alt="vehicle"

@@ -8,7 +8,7 @@ export default function VehicleDetailContent({
   increment,
   history,
 }) {
-  // console.log(counter);
+  const photo = JSON.parse(vehiclesData.photo);
   return (
     <>
       <section className="content">
@@ -17,8 +17,8 @@ export default function VehicleDetailContent({
           <section className="vehicle-photo">
             <img
               src={
-                vehiclesData.photo
-                  ? `${process.env.REACT_APP_HOST}/${vehiclesData.photo[0]}`
+                photo
+                  ? `${process.env.REACT_APP_HOST}/${photo[0]}`
                   : require("../assets/images/default-vehicle.jpg")
               }
               id="vehicle-photo1"
@@ -26,8 +26,8 @@ export default function VehicleDetailContent({
             ></img>
             <img
               src={
-                vehiclesData.photo
-                  ? `${process.env.REACT_APP_HOST}/${vehiclesData.photo[1]}`
+                photo
+                  ? `${process.env.REACT_APP_HOST}/${photo[1]}`
                   : require("../assets/images/default-vehicle.jpg")
               }
               id="vehicle-photo2"
@@ -35,8 +35,8 @@ export default function VehicleDetailContent({
             ></img>
             <img
               src={
-                vehiclesData.photo
-                  ? `${process.env.REACT_APP_HOST}/${vehiclesData.photo[2]}`
+                photo
+                  ? `${process.env.REACT_APP_HOST}/${photo[2]}`
                   : require("../assets/images/default-vehicle.jpg")
               }
               id="vehicle-photo3"
