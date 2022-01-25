@@ -20,6 +20,7 @@ export default function ReservationContent({
       payment: "transfer",
       start_date: e.target.start_date.value,
       return_date: e.target.return_date.value,
+      total: counter * vehiclesData.price,
     };
 
     console.log(body);
