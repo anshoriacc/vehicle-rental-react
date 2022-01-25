@@ -3,12 +3,14 @@ import "../assets/css/Detail.css";
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import VehicleDetailContent from "../components/VehicleDetailContent";
+import ReservationContent from "../components/ReservationContent";
+import { makeReservation } from "../utils/reservation";
 import { getVehicleDetail } from "../utils/vehicle";
 
-export default class VehicleDetail extends Component {
+export default class Reservation extends Component {
   state = {
-    userData: { token: "", name: "", role: 0, photo: "" },
+    //   userData: { token: "", name: "", role: 0, photo: "" },
+    token: "",
     vehiclesData: "",
     counter: 0,
   };
@@ -38,13 +40,23 @@ export default class VehicleDetail extends Component {
         userData: { token: accessToken },
       });
     }
+
     // console.log(this.props.match.params.id);
     getVehicleDetail(this.props.match.params.id)
       .then((response) => {
+        console.log(response);
         this.setState({
           vehiclesData: response.data.result.data[0],
         });
-        console.log(response.data.result.data[0]);
+        // console.log(response.data.result.data[0]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    makeReservation(accessToken)
+      .then((response) => {
+        console.log("berhasil");
       })
       .catch((error) => {
         console.log(error);
@@ -55,7 +67,7 @@ export default class VehicleDetail extends Component {
     return (
       <main>
         <Header />
-        <VehicleDetailContent
+        <ReservationContent
           vehiclesData={this.state.vehiclesData}
           counter={this.state.counter}
           decrement={this.countDecrement}

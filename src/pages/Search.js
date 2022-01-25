@@ -5,6 +5,8 @@ import "../assets/css/Search.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
+import SearchVehicleCard from "../components/SearchVehicleCard";
+
 import { searchVehicle } from "../utils/vehicle";
 
 export default class Search extends Component {
@@ -12,6 +14,10 @@ export default class Search extends Component {
     token: "",
     vehiclesData: "",
   };
+
+componentDidUpdate(){
+  console.log(this.state.vehiclesData);
+}
 
   componentDidMount() {
     window.scrollTo(0, 0);
@@ -24,9 +30,7 @@ export default class Search extends Component {
       });
     }
 
-    const { category } = this.props.match.params;
-
-    searchVehicle(category, 1)
+    searchVehicle(this.props.location.search)
       .then((response) => {
         this.setState({
           vehiclesData: response.data.result.data,
@@ -38,6 +42,7 @@ export default class Search extends Component {
   }
 
   render() {
+    const { vehiclesData } = this.state;
     return (
       <>
         <Header />
@@ -53,6 +58,10 @@ export default class Search extends Component {
               Search
             </button>
           </form>
+          <SearchVehicleCard
+            vehiclesData={vehiclesData}
+            history={this.props.history}
+          />
         </section>
         <Footer />
       </>

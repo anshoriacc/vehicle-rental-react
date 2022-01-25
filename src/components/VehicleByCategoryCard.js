@@ -8,12 +8,12 @@ function SectionTitle({ category }) {
   );
 }
 
-function Card({ vehiclesData, index, history }) {
+function Card({ vehiclesData, history }) {
   const photo = JSON.parse(vehiclesData.photo);
 
   return (
     <div
-      className={`popular-card${index + 1}`}
+      className={`popular-card`}
       onClick={() => history.push(`/vehicle/detail/${vehiclesData.id}`)}
     >
       <img

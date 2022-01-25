@@ -15,8 +15,9 @@ export const getVehicleDetail = (vehicleId) => {
   return axios.get(URL);
 };
 
-export const searchVehicle = (keyword, category, location, page) => {
-  const URL = `${process.env.REACT_APP_HOST}/vehicles/search/?keyword=${keyword}&category=${category}&location=${location}&limit=16&page=${page}`;
+export const searchVehicle = (search) => {
+  // const URL = `${process.env.REACT_APP_HOST}/vehicles/search/?keyword=${keyword}&category=${category}&location=${location}&limit=16&page=${page}`;
+  const URL = `${process.env.REACT_APP_HOST}/vehicles${search}`;
   return axios.get(URL);
 };
 

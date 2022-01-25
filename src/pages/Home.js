@@ -18,6 +18,15 @@ class Home extends React.Component {
     vehiclesData: "",
   };
 
+  exploreHandler = (e) => {
+    e.preventDefault();
+    const body = {
+      keyword: e.target.keyword.value,
+      location: e.target.location.value,
+    };
+    this.props.history.push(`/search?keyword=${body.keyword}&location=${body.location}`);
+  };
+
   componentDidMount() {
     const accessToken = JSON.parse(
       localStorage.getItem("vehicle-rental-token")
@@ -58,7 +67,7 @@ class Home extends React.Component {
             </h1>
             <p>Vehicle Finder</p>
             <hr className="finder-line" />
-            <form onSubmit={() => {}} className="form-home-search">
+            <form onSubmit={this.exploreHandler} className="form-home-search">
               <input
                 className="input-form form-size"
                 type="text"

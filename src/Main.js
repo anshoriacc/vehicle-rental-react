@@ -18,6 +18,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import VehicleAdd from "./pages/VehicleAdd";
 import VehicleEdit from "./pages/VehicleEdit";
 import VehicleDetail from "./pages/VehicleDetail";
+import Reservation from "./pages/Reservation";
 import History from "./pages/History";
 import Vehicle from "./pages/Vehicle";
 import VehicleByCategory from "./pages/VehicleByCategory";
@@ -121,6 +122,16 @@ export default class Main extends React.Component {
                 if (role !== 3)
                   return <Redirect from="/vehicle/edit/:id" to="/" />;
                 return <VehicleEdit {...routerProps} />;
+              }}
+            />
+            <Route
+              path="/vehicle/detail/:id/reservation"
+              render={(routerProps) => {
+                if (role !== 2)
+                  return (
+                    <Redirect from="/vehicle/detail/:id/reservation" to="/" />
+                  );
+                return <Reservation {...routerProps} />;
               }}
             />
             {/* <Route path="/vehicle/edit/:id" exact component={VehicleDetail} /> */}
