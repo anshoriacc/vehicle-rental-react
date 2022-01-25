@@ -50,24 +50,6 @@ export default function ReservationContent({
                 id="vehicle-photo1"
                 alt="vehiclePhoto"
               ></img>
-              {/* <img
-              src={
-                vehiclesData.photo
-                  ? `${process.env.REACT_APP_HOST}/${vehiclesData.photo[1]}`
-                  : require("../assets/images/default-vehicle.jpg")
-              }
-              id="vehicle-photo2"
-              alt="vehiclePhoto"
-            ></img>
-            <img
-              src={
-                vehiclesData.photo
-                  ? `${process.env.REACT_APP_HOST}/${vehiclesData.photo[2]}`
-                  : require("../assets/images/default-vehicle.jpg")
-              }
-              id="vehicle-photo3"
-              alt="vehiclePhoto"
-            ></img> */}
             </section>
             <section className="detail">
               <h1>{vehiclesData.name}</h1>

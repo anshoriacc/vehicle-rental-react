@@ -128,7 +128,7 @@ export default class Main extends React.Component {
             <Route
               path="/vehicle/detail/:id/reservation/payment"
               render={(routerProps) => {
-                if (role !== 2)
+                if (role === 3)
                   return (
                     <Redirect
                       from="/vehicle/detail/:id/reservation/payment"
@@ -141,7 +141,7 @@ export default class Main extends React.Component {
             <Route
               path="/vehicle/detail/:id/reservation"
               render={(routerProps) => {
-                if (role !== 2)
+                if (role === 3)
                   return (
                     <Redirect from="/vehicle/detail/:id/reservation" to="/" />
                   );
