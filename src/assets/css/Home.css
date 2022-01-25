@@ -135,6 +135,13 @@ hr.finder-line {
   box-shadow: 0 0 5px #0000004d;
 }
 
+[class^="popular-card"] img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
 .pc-text {
   font-size: calc(0.5rem + 0.6vmax);
   width: 50%;

@@ -5,15 +5,17 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import HistoryCard from "../components/HistoryCard";
 
-// import reservation "../utils/reservation"
+import { history } from "../utils/reservation";
 
 export default class History extends React.Component {
   state = {
     token: "",
-    historyData: "",
+    historyData: [],
   };
 
   componentDidMount() {
+    window.scrollTo(0, 0);
+
     const accessToken = JSON.parse(
       localStorage.getItem("vehicle-rental-token")
     );
@@ -23,6 +25,16 @@ export default class History extends React.Component {
         token: accessToken,
       });
     }
+
+    history(accessToken)
+      .then((response) => {
+        this.setState({
+          historyData: response.data.result.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
     // const URL = `${process.env.REACT_APP_HOST}/reservation`;
     // axios

@@ -16,17 +16,29 @@ export default function VehicleDetailContent({
         <section className="vehicle">
           <section className="vehicle-photo">
             <img
-              src={require("../assets/images/add-photo.jpg")}
+              src={
+                vehiclesData.photo
+                  ? `${process.env.REACT_APP_HOST}/${vehiclesData.photo[0]}`
+                  : require("../assets/images/default-vehicle.jpg")
+              }
               id="vehicle-photo1"
               alt="vehiclePhoto"
             ></img>
             <img
-              src={require("../assets/images/add-photo.jpg")}
+              src={
+                vehiclesData.photo
+                  ? `${process.env.REACT_APP_HOST}/${vehiclesData.photo[1]}`
+                  : require("../assets/images/default-vehicle.jpg")
+              }
               id="vehicle-photo2"
               alt="vehiclePhoto"
             ></img>
             <img
-              src={require("../assets/images/add-photo.jpg")}
+              src={
+                vehiclesData.photo
+                  ? `${process.env.REACT_APP_HOST}/${vehiclesData.photo[2]}`
+                  : require("../assets/images/default-vehicle.jpg")
+              }
               id="vehicle-photo3"
               alt="vehiclePhoto"
             ></img>

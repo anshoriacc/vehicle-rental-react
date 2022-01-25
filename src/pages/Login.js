@@ -26,6 +26,10 @@ class Login extends React.Component {
         JSON.stringify(this.props.auth.userData.token)
       );
       localStorage.setItem(
+        "vehicle-rental-userId",
+        JSON.stringify(this.props.auth.userData.user_id)
+      );
+      localStorage.setItem(
         "vehicle-rental-name",
         JSON.stringify(this.props.auth.userData.name)
       );

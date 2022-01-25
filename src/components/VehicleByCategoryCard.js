@@ -12,11 +12,16 @@ function Card({ vehiclesData, index, history }) {
   return (
     <div
       className={`popular-card${index + 1}`}
-      style={{
-        backgroundImage: `url("https://teja9.kuikr.com/images/car/default-cars.jpeg")`,
-      }}
       onClick={() => history.push(`/vehicle/detail/${vehiclesData.id}`)}
     >
+      <img
+        src={
+          vehiclesData.photo
+            ? `${process.env.REACT_APP_HOST}/${vehiclesData.photo[0]}`
+            : require("../assets/images/default-vehicle.jpg")
+        }
+        alt="vehicle"
+      ></img>
       <div className="pc-text">
         <p className="pc-title">{vehiclesData.vehicle}</p>
         <p className="pc-location">{vehiclesData.location}</p>

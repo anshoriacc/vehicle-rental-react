@@ -11,15 +11,19 @@ import { getVehicle4 } from "../utils/vehicle";
 export default class Vehicle extends React.Component {
   state = {
     token: "",
-    popularVehiclesData: "",
-    bikeVehiclesData: "",
-    carVehiclesData: "",
-    motorbikeVehiclesData: "",
+    popularVehiclesData: [],
+    bikeVehiclesData: [],
+    carVehiclesData: [],
+    motorbikeVehiclesData: [],
   };
 
   //   componentDidUpdate() {
   //     console.log(this.state);
   //   }
+
+  componentDidUpdate() {
+    console.log(this.state);
+  }
 
   componentDidMount() {
     window.scrollTo(0, 0);
