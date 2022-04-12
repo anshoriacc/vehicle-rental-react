@@ -46,10 +46,10 @@ export default class Vehicle extends React.Component {
       .then(
         axios.spread((res1, res2, res3, res4) => {
           this.setState({
-            popularVehiclesData: res1.data.result.data,
-            bikeVehiclesData: res2.data.result.data,
-            carVehiclesData: res3.data.result.data,
-            motorbikeVehiclesData: res4.data.result.data,
+            popularVehiclesData: res1.data.data,
+            bikeVehiclesData: res2.data.data,
+            carVehiclesData: res3.data.data,
+            motorbikeVehiclesData: res4.data.data,
           });
         })
       )
