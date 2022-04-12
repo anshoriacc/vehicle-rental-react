@@ -40,7 +40,7 @@ class Home extends React.Component {
     getVehicle4("popular")
       .then((response) => {
         this.setState({
-          vehiclesData: response.data.result.data,
+          vehiclesData: response.data.data,
         });
       })
       .catch((error) => {

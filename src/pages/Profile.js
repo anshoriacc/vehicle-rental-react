@@ -30,7 +30,7 @@ export default class Profile extends React.Component {
     axios
       .get(URL, { headers: { "x-access-token": accessToken } })
       .then((response) => {
-        const data = response.data.result.data[0];
+        const data = response.data.data;
         console.log(data);
         this.setState({
           userData: data,

@@ -45,7 +45,7 @@ export default class Payment extends Component {
       .then((response) => {
         console.log(response);
         this.setState({
-          vehiclesData: response.data.result.data[0],
+          vehiclesData: response.data.data,
         });
         // console.log(response.data.result.data[0]);
       })

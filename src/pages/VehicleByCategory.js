@@ -29,7 +29,7 @@ export default class VehicleByCategory extends React.Component {
     getVehicle16(category, 1)
       .then((response) => {
         this.setState({
-          vehiclesData: response.data.result.data,
+          vehiclesData: response.data.data,
         });
       })
       .catch((error) => {

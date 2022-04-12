@@ -42,7 +42,7 @@ export default class VehicleDetail extends Component {
     getVehicleDetail(this.props.match.params.id)
       .then((response) => {
         this.setState({
-          vehiclesData: response.data.result.data[0],
+          vehiclesData: response.data.data,
         });
         // console.log(response.data.result.data[0]);
       })

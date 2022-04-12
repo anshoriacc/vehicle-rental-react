@@ -29,7 +29,7 @@ export default class History extends React.Component {
     history(accessToken)
       .then((response) => {
         this.setState({
-          historyData: response.data.result.data,
+          historyData: response.data.data,
         });
       })
       .catch((error) => {
